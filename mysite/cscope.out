@@ -1,0 +1,466 @@
+cscope 15 /data/omriz/Workspace/django/mysite -c 0000003446
+	@./polls/admin.py
+
+1 from 
+	~django.contrib
+ import 
+admin
+
+2 from 
+	~polls.models
+ import 
+Choice
+ , 
+Poll
+
+4 class 
+	cChoiceInline
+ ( 
+admin
+ . 
+TabularInline
+ ) :
+
+5 
+	=model
+ = 
+Choice
+
+6 
+	=extra
+ = 3
+
+8 class 
+	cPollAdmin
+ ( 
+admin
+ . 
+ModelAdmin
+ ) :
+
+9 
+	=fieldsets
+ = [
+
+13 
+	=inlines
+ = [ 
+ChoiceInline
+ ]
+
+14 
+	=list_display
+ = ( 'question' , 'pub_date' , 'was_published_recently' )
+
+15 
+	=list_filter
+ = [ 'pub_date' ]
+
+16 
+	=search_fields
+ = [ 'question' ]
+
+18 
+admin
+ . 
+site
+ . 
+	`register
+ ( 
+Poll
+ , 
+PollAdmin
+ )
+
+
+	@./polls/models.py
+
+1 import 
+	~datetime
+
+2 from 
+	~django.utils
+ import 
+timezone
+
+3 from 
+	~django.db
+ import 
+models
+
+6 class 
+	cPoll
+ ( 
+models
+ . 
+Model
+ ) :
+
+7 
+	=question
+ = 
+models
+ . 
+	`CharField
+ ( 
+max_length
+ = 200 )
+
+8 
+	=pub_date
+ = 
+models
+ . 
+	`DateTimeField
+ ( 'date published' )
+
+10 def 
+	$__str__
+ ( 
+self
+ ) :
+
+11 return 
+self
+ . 
+question
+ 
+	}
+
+12 def 
+	$was_published_recently
+ ( 
+self
+ ) :
+
+13 return 
+self
+ . 
+pub_date
+ >= 
+timezone
+ . 
+	`now
+ ( ) - 
+datetime
+ . 
+	`timedelta
+ ( 
+days
+ = 1 ) 
+	}
+
+14 
+was_published_recently
+ . 
+	=admin_order_field
+ = 'pub_date'
+
+15 
+was_published_recently
+ . 
+	=boolean
+ = True
+
+16 
+was_published_recently
+ . 
+	=short_description
+ = 'Published recently?'
+
+18 class 
+	cChoice
+ ( 
+models
+ . 
+Model
+ ) :
+
+19 
+	=poll
+ = 
+models
+ . 
+	`ForeignKey
+ ( 
+Poll
+ )
+
+20 
+	=choice_text
+ = 
+models
+ . 
+	`CharField
+ ( 
+max_length
+ = 200 )
+
+21 
+	=votes
+ = 
+models
+ . 
+	`IntegerField
+ ( 
+default
+ = 0 )
+
+23 def 
+	$__str__
+ ( 
+self
+ ) :
+
+24 return 
+self
+ . 
+choice_text
+ 
+	}
+
+
+	@./polls/__init__.py
+
+
+	@./polls/views.py
+
+1 from 
+	~django.shortcuts
+ import 
+render
+
+
+	@./polls/tests.py
+
+1 from 
+	~django.test
+ import 
+TestCase
+
+
+	@./manage.py
+
+2 import 
+	~os
+
+3 import 
+	~sys
+
+5 if 
+__name__
+ == "__main__" :
+
+6 
+os
+ . 
+environ
+ . 
+	`setdefault
+ ( "DJANGO_SETTINGS_MODULE" , "mysite.settings" )
+
+8 from 
+	~django.core.management
+ import 
+execute_from_command_line
+
+10 
+	`execute_from_command_line
+ ( 
+sys
+ . 
+argv
+ )
+
+
+	@./mysite/__init__.py
+
+
+	@./mysite/wsgi.py
+
+10 import 
+	~os
+
+11 
+os
+ . 
+environ
+ . 
+	`setdefault
+ ( "DJANGO_SETTINGS_MODULE" , "mysite.settings" )
+
+13 from 
+	~django.core.wsgi
+ import 
+get_wsgi_application
+
+14 
+	=application
+ = 
+	`get_wsgi_application
+ ( )
+
+
+	@./mysite/settings.py
+
+12 import 
+	~os
+
+13 
+	=BASE_DIR
+ = 
+os
+ . 
+path
+ . 
+	`dirname
+ ( 
+os
+ . 
+path
+ . 
+	`dirname
+ ( 
+__file__
+ ) )
+
+20 
+	=SECRET_KEY
+ = '05!4bwg6%@m$3t5ttfrs+_(@s&sqf_gi!o_+_-5i27cu^2nu6l'
+
+23 
+	=DEBUG
+ = True
+
+25 
+	=TEMPLATE_DEBUG
+ = True
+
+27 
+	=ALLOWED_HOSTS
+ = [ ]
+
+32 
+	=INSTALLED_APPS
+ = ( 'django.contrib.admin'
+
+42 
+	=MIDDLEWARE_CLASSES
+ = ( 'django.contrib.sessions.middleware.SessionMiddleware'
+
+51 
+	=ROOT_URLCONF
+ = 'mysite.urls'
+
+53 
+	=WSGI_APPLICATION
+ = 'mysite.wsgi.application'
+
+59 
+	=DATABASES
+ = { 'default'
+
+62 : 
+os
+ . 
+path
+ . 
+	`join
+ ( 
+BASE_DIR
+ , 'db.sqlite3' ) ,
+
+69 
+	=LANGUAGE_CODE
+ = 'en-us'
+
+71 
+	=TIME_ZONE
+ = 'Israel'
+
+73 
+	=USE_I18N
+ = True
+
+75 
+	=USE_L10N
+ = True
+
+77 
+	=USE_TZ
+ = True
+
+83 
+	=STATIC_URL
+ = '/static/'
+
+86 
+	=TEMPLATE_DIRS
+ = [ 
+os
+ . 
+path
+ . 
+	`join
+ ( 
+BASE_DIR
+ , 'templates' ) ]
+
+
+	@./mysite/urls.py
+
+1 from 
+	~django.conf.urls
+ import 
+patterns
+ , 
+include
+ , 
+url
+
+3 from 
+	~django.contrib
+ import 
+admin
+
+4 
+admin
+ . 
+	`autodiscover
+ ( )
+
+6 
+	=urlpatterns
+ = 
+	`patterns
+ ( '' ,
+
+11 
+	`url
+ ( r'^admin/' , 
+	`include
+ ( 
+admin
+ . 
+site
+ . 
+urls
+ ) ) ,
+
+
+	@
+1
+.
+0
+10
+177
+./polls/admin.py
+./polls/models.py
+./polls/__init__.py
+./polls/views.py
+./polls/tests.py
+./manage.py
+./mysite/__init__.py
+./mysite/wsgi.py
+./mysite/settings.py
+./mysite/urls.py

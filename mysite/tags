@@ -1,0 +1,63 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ALLOWED_HOSTS	mysite/settings.py	/^ALLOWED_HOSTS = []$/;"	v
+BASE_DIR	mysite/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(__file__))$/;"	v
+Choice	polls/admin.py	/^from polls.models import Choice, Poll$/;"	i
+Choice	polls/models.py	/^class Choice(models.Model):$/;"	c
+ChoiceInline	polls/admin.py	/^class ChoiceInline(admin.TabularInline):$/;"	c
+DATABASES	mysite/settings.py	/^DATABASES = {$/;"	v
+DEBUG	mysite/settings.py	/^DEBUG = True$/;"	v
+INSTALLED_APPS	mysite/settings.py	/^INSTALLED_APPS = ($/;"	v
+LANGUAGE_CODE	mysite/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	v
+MIDDLEWARE_CLASSES	mysite/settings.py	/^MIDDLEWARE_CLASSES = ($/;"	v
+Poll	polls/admin.py	/^from polls.models import Choice, Poll$/;"	i
+Poll	polls/models.py	/^class Poll(models.Model):$/;"	c
+PollAdmin	polls/admin.py	/^class PollAdmin(admin.ModelAdmin):$/;"	c
+ROOT_URLCONF	mysite/settings.py	/^ROOT_URLCONF = 'mysite.urls'$/;"	v
+SECRET_KEY	mysite/settings.py	/^SECRET_KEY = '05!4bwg6%@m$3t5ttfrs+_(@s&sqf_gi!o_+_-5i27cu^2nu6l'$/;"	v
+STATIC_URL	mysite/settings.py	/^STATIC_URL = '\/static\/'$/;"	v
+TEMPLATE_DEBUG	mysite/settings.py	/^TEMPLATE_DEBUG = True$/;"	v
+TEMPLATE_DIRS	mysite/settings.py	/^TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]$/;"	v
+TIME_ZONE	mysite/settings.py	/^TIME_ZONE = 'Israel'$/;"	v
+TestCase	polls/tests.py	/^from django.test import TestCase$/;"	i
+USE_I18N	mysite/settings.py	/^USE_I18N = True$/;"	v
+USE_L10N	mysite/settings.py	/^USE_L10N = True$/;"	v
+USE_TZ	mysite/settings.py	/^USE_TZ = True$/;"	v
+WSGI_APPLICATION	mysite/settings.py	/^WSGI_APPLICATION = 'mysite.wsgi.application'$/;"	v
+__str__	polls/models.py	/^    def __str__(self):$/;"	m	class:Choice	file:
+__str__	polls/models.py	/^    def __str__(self):$/;"	m	class:Poll	file:
+admin	mysite/urls.py	/^from django.contrib import admin$/;"	i
+admin	polls/admin.py	/^from django.contrib import admin$/;"	i
+app.name %}Models in the {{ name }} application{% endblocktrans %}	templates/admin/index.html	/^            <a href="{{ app.app_url }}" class="section" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">$/;"	a
+application	mysite/wsgi.py	/^application = get_wsgi_application()$/;"	v
+choice_text	polls/models.py	/^    choice_text = models.CharField(max_length=200)$/;"	v	class:Choice
+datetime	polls/models.py	/^import datetime$/;"	i
+execute_from_command_line	manage.py	/^    from django.core.management import execute_from_command_line$/;"	i
+extra	polls/admin.py	/^    extra = 3$/;"	v	class:ChoiceInline
+fieldsets	polls/admin.py	/^    fieldsets = [$/;"	v	class:PollAdmin
+get_wsgi_application	mysite/wsgi.py	/^from django.core.wsgi import get_wsgi_application$/;"	i
+include	mysite/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+inlines	polls/admin.py	/^    inlines = [ChoiceInline]$/;"	v	class:PollAdmin
+list_display	polls/admin.py	/^    list_display = ('question', 'pub_date', 'was_published_recently')$/;"	v	class:PollAdmin
+list_filter	polls/admin.py	/^    list_filter = ['pub_date']$/;"	v	class:PollAdmin
+model	polls/admin.py	/^    model = Choice$/;"	v	class:ChoiceInline
+models	polls/models.py	/^from django.db import models$/;"	i
+os	manage.py	/^import os$/;"	i
+os	mysite/settings.py	/^import os$/;"	i
+os	mysite/wsgi.py	/^import os$/;"	i
+patterns	mysite/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+poll	polls/models.py	/^    poll = models.ForeignKey(Poll)$/;"	v	class:Choice
+pub_date	polls/models.py	/^    pub_date = models.DateTimeField('date published')$/;"	v	class:Poll
+question	polls/models.py	/^    question = models.CharField(max_length=200)$/;"	v	class:Poll
+render	polls/views.py	/^from django.shortcuts import render$/;"	i
+search_fields	polls/admin.py	/^    search_fields = ['question']$/;"	v	class:PollAdmin
+sys	manage.py	/^import sys$/;"	i
+timezone	polls/models.py	/^from django.utils import timezone$/;"	i
+url	mysite/urls.py	/^from django.conf.urls import patterns, include, url$/;"	i
+urlpatterns	mysite/urls.py	/^urlpatterns = patterns('',$/;"	v
+votes	polls/models.py	/^    votes = models.IntegerField(default=0)$/;"	v	class:Choice
+was_published_recently	polls/models.py	/^    def was_published_recently(self):$/;"	m	class:Poll
